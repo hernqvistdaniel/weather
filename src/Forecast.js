@@ -7,16 +7,18 @@ class Forecast extends React.Component {
       error: null,
       isLoaded: false,
       temperature: null,
+      id: null,
       coords: [],
-      summary: '',
-      timezone: null
+      summary: [],
+      time: null
     };
   }
 
   
   componentDidMount() {
+    // https://api.openweathermap.org/data/2.5/weather?lat=42.36&lon=-71.05&APPID=5e158b3eb258eaa205c563444bddb6e2
     
-    const APIkey = 'edd839fe6f8824a69560462761ca9d86';
+    const APIkey = '5e158b3eb258eaa205c563444bddb6e2';
     // const lat = 42.3601;
     // const long = -71.0589;
     
@@ -25,19 +27,22 @@ class Forecast extends React.Component {
         this.setState({
           coords: position.coords
         })
-        console.log(this.state.coords);
+        // console.log(this.state.coords);
       
-      fetch('https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/'+APIkey+'/'+this.state.coords.latitude+','+this.state.coords.longitude+'?units=auto')
+      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${this.state.coords.latitude}&lon=${this.state.coords.longitude}&APPID=${APIkey}&units=metric`)
         .then(res => res.json())
         .then(
           (result) => {
+            // console.log(result)
             this.setState({
               isLoaded: true,
-              summary: result.currently.summary,
-              timezone: result.timezone,
-              temperature: result.currently.temperature
+              id: result.id,
+              name: result.name,
+              time: result.dt,
+              temperature: result.main.temp,
+              summary: result.weather[0]
             });
-            console.log(this.state.currently)
+            console.log(this.state.summary)
           },
           (error) => {
             this.setState({
@@ -51,7 +56,7 @@ class Forecast extends React.Component {
   }
 
   render() {
-    const { error, isLoaded, temperature, timezone, summary } = this.state;
+    const { error, isLoaded, temperature, time, summary, id, name } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -59,8 +64,15 @@ class Forecast extends React.Component {
     } else {
       return (
         <ul>
-            <li key={timezone}>
-              {timezone} {summary} {temperature} C
+          <p>On your location in: <strong>{name}</strong></p>
+            <li key={id}>
+              <strong>Time:</strong> {time}  
+            </li>
+            <li>
+            <strong>The weather is:</strong> {summary.main}
+            </li>
+            <li>
+            <strong>With a temperature of:</strong> {temperature}°C
             </li>
         </ul>
       );
