@@ -5,7 +5,7 @@ function Navbar () {
     return (
       <div>
         <nav className="navbar navbar-light bg-light">
-          <span className="navbar-brand l-0 h1">Welcome to the Weather-App motherfucker</span>
+          <span className="navbar-brand l-0 h1">Welcome to the Weather-App!</span>
         </nav>
       </div>
     );  

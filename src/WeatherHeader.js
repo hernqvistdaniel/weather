@@ -21,7 +21,7 @@ class WeatherHeader extends React.Component {
     this.fetchWeather()
   }
 
-  fetchWeather = (location = null) => {
+  fetchWeather = () => {
     
     const APIkey = '5e158b3eb258eaa205c563444bddb6e2';
     
@@ -37,7 +37,6 @@ class WeatherHeader extends React.Component {
         .then(res => res.json())
         .then(
           (result) => {
-            console.log(result)
             this.setState({
               isLoaded: true,
               id: result.id,
@@ -79,7 +78,7 @@ class WeatherHeader extends React.Component {
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">{this.state.name}</h5>
-              <h6 className="card-subtitle mb-2 text-muted">Time: {this.state.time}</h6>
+              <h6 className="card-subtitle mb-2 text-muted">Time: <em>{new Date(this.state.time * 1000).toDateString()}</em></h6>
               <p className="card-text">
                 The weather is: {this.state.summary} ({this.state.summarySub})
               </p>
@@ -97,9 +96,6 @@ class WeatherHeader extends React.Component {
               <p className="card-text">
                 And set at: {this.state.sunDown}
               </p>
-              <a href="#.se" className="card-link">
-                somelink
-              </a>
             </div>
           </div>
         )
