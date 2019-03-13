@@ -31,3 +31,24 @@
     transform: rotate(360deg);
   }
 }
+
+.icon {
+  height: 70px;
+  width: 70px;
+}
+
+.cold {
+
+}
+
+.card {
+  margin-top: 10px;
+}
+
+#root {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}

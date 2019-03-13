@@ -35,21 +35,22 @@ class App extends React.Component {
         })
         // console.log(this.state.coords);
 
-        let searchRequestURI = '';
-        let geoRequestURI = `https://api.openweathermap.org/data/2.5/weather?lat=${this.state.coords.latitude}&lon=${this.state.coords.longitude}&APPID=${APIkey}&units=metric`;
+        // let searchRequestURI = '';
+        let geoRequestURI = `https://api.openweathermap.org/data/2.5/forecast?lat=${this.state.coords.latitude}&lon=${this.state.coords.longitude}&APPID=${APIkey}&units=metric`;
            
       fetch(geoRequestURI)
         .then(res => res.json())
         .then(
           (result) => {
-            // console.log(result)
+            console.log(result)
             this.setState({
               isLoaded: true,
               id: result.id,
-              name: result.name,
-              time: result.dt,
-              temperature: result.main.temp,
-              summary: result.weather[0]
+              name: result.city.name,
+              time: result.list[0].dt_txt,
+              temperature: result.list[0].main.temp,
+              summary: result.list[0].weather[0],
+              wind: result.list[0].wind.speed
             });
             // console.log(this.state.summary)
           },
@@ -69,7 +70,9 @@ class App extends React.Component {
       <div>
         <Navbar />
         {
-          this.state.isLoaded ? <Forecast weather={this.state} /> : <p>Loading...</p>
+          this.state.isLoaded ? <Forecast weather={this.state} /> : <div className="spinner-border" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
         }
         {/* <Search onSearch={this.fetchWeather} /> */}
       </div>
