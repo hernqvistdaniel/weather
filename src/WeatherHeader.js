@@ -63,6 +63,7 @@ class WeatherHeader extends React.Component {
   }
 
   render() {
+   
 
     if (this.state.error) {
       return <div>Error: {this.state.error.message}</div>;
@@ -78,7 +79,7 @@ class WeatherHeader extends React.Component {
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">{this.state.name}</h5>
-              <h6 className="card-subtitle mb-2 text-muted">Time: <em>{new Date(this.state.time * 1000).toDateString()}</em></h6>
+              <h6 className="card-subtitle mb-2 text-muted">Time: <em>{new Date(this.state.time).toLocaleTimeString()}</em></h6>
               <p className="card-text">
                 The weather is: {this.state.summary} ({this.state.summarySub})
               </p>
@@ -91,10 +92,10 @@ class WeatherHeader extends React.Component {
                 And a windspeed of {this.state.wind} m/s
               </p>
               <p className="card-text">
-                The sun will rise at: {this.state.sunUp}
+                The sun will rise at: {new Date(this.state.sunUp * 1000).toLocaleString().slice(10, 16)}
               </p>
               <p className="card-text">
-                And set at: {this.state.sunDown}
+                And set at: {new Date(this.state.sunDown * 1000).toLocaleString().slice(10, 16)}
               </p>
             </div>
           </div>
