@@ -2,7 +2,9 @@ import React from 'react';
 import WeatherHeader from './WeatherHeader';
 import Navbar from './Navbar';
 import DayForecast from './DayForecast';
-// import WeekForecast from './WeekForecast';
+import WeekForecast from './WeekForecast';
+import WeeklyBar from './WeeklyBar';
+
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -16,7 +18,8 @@ class App extends React.Component {
         <Navbar />
         <WeatherHeader />
         <DayForecast />
-        {/* <WeekForecast /> */}
+        <WeeklyBar />
+        <WeekForecast />
       </div>
     )  
   }

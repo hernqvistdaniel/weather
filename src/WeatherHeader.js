@@ -76,6 +76,7 @@ class WeatherHeader extends React.Component {
     } else {
       return (
         (
+          <div id="currentDiv">
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">{this.state.name}</h5>
@@ -98,6 +99,7 @@ class WeatherHeader extends React.Component {
                 And set at: {new Date(this.state.sunDown * 1000).toLocaleString().slice(10, 16)}
               </p>
             </div>
+          </div>
           </div>
         )
       );

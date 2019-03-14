@@ -40,25 +40,24 @@ class DayForecast extends React.Component {
   }
 
   render() {
-    let hourly = this.state.summary;
+    let hours = this.state.summary;
     let result = [];
 
     for (let i = 0; i < 8; i++) {
-      if (hourly[i]) {
-        result.push(hourly[i]);
+      if (hours[i]) {
+        result.push(hours[i]);
       }
     }
 
-    let weatherData;
+    let hoursForecast;
     if (result.length > 0) {
-      weatherData = result.map(data => {
-        console.log(data);
+      hoursForecast = result.map(data => {
         return (
-          <div className="miniCard">
+          <div id="dayDiv" className="miniCard">
             <img
               src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`}
               className="card-img-top dailyIcon"
-              alt="..."
+              alt="Icon displaying weather"
             />
             <div className="card-body">
               <p className="card-title"><strong>{data.dt_txt.slice(10, 16)}</strong></p>
@@ -69,8 +68,8 @@ class DayForecast extends React.Component {
       });
     }
     return (
-      <div className="dailyGroup">
-        {weatherData}
+      <div className="dayDivReturn">
+        {hoursForecast}
       </div>
       ) 
   }
