@@ -53,22 +53,22 @@ class DayForecast extends React.Component {
     if (result.length > 0) {
       hoursForecast = result.map(data => {
         return (
-          <div id="dayDiv" className="miniCard">
+          <div className="dailyMinis">
+          <div id="iconDiv">
             <img
+              id="icon"
               src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`}
-              className="card-img-top dailyIcon"
               alt="Icon displaying weather"
             />
-            <div className="card-body">
-              <p className="card-title"><strong>{data.dt_txt.slice(10, 16)}</strong></p>
-              <p className="card-text"><strong>{data.main.temp.toFixed()} °C</strong></p>
-            </div>
+              </div>
+              <p><strong>{data.dt_txt.slice(10, 16)}</strong></p>
+              <p><strong>{data.main.temp.toFixed()} °C</strong></p>
           </div>
         );
       });
     }
     return (
-      <div className="dayDivReturn">
+      <div id="dayDivReturn">
         {hoursForecast}
       </div>
       ) 

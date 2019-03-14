@@ -16,7 +16,7 @@ class WeekForecast extends React.Component {
         coords: position.coords
       });
 
-      let geoRequestURI = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${APIkey}/${this.state.coords.longitude},${this.state.coords.latitude}?exclude=currently,minutely,hourly,alerts,flags`;
+      let geoRequestURI = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${APIkey}/${this.state.coords.latitude},${this.state.coords.longitude}?exclude=currently,minutely,hourly,alerts,flags&units=si`;
 
       fetch(geoRequestURI)
         .then(res => res.json())
@@ -47,37 +47,52 @@ class WeekForecast extends React.Component {
       }
     }
 
+    if (this.state.error) {
+      return <div>Error: {this.state.error.message}</div>;
+    } else if (!this.state.isLoaded) {
+      return (
+        <div id="spinner">
+        <div className="spinner-border" role="status">
+        </div>
+          <span className="sr-only">Loading...</span>
+        </div>
+      );
+    } else {
     let WeekForecast;
     if (result.length > 0) {
       WeekForecast = result.map(data => {
         return (
           <div id="weekDiv">
-          <div className="miniCard">
-            <img
-              src={`http://openweathermap.org/img/w/${data.icon}.png`}
-              className="card-img-top dailyIcon"
-              alt="Icon displaying weather"
-            />
-            <div className="card-body">
-              <p className="card-title"><strong>{data.time}</strong></p>
-              <p className="card-text"><strong>{data.summary}</strong></p>
-              <p className="card-text"><strong>{data.temperatureHigh} °C</strong></p>
-              <p className="card-text"><strong>{data.temperatureLow} °C</strong></p>
-              <p className="card-text"><strong>{data.windspeed} m/s</strong></p>
+            <div>
+              <img
+                src={`http://openweathermap.org/img/w/${data.icon}.png`}
+                className="card-img-top dailyIcon"
+                alt="Icon displaying weather"
+              />
 
-
+              <p className="card-title">
+                <strong>{new Date(data.time * 1000).toDateString().slice(0, 10)}</strong>
+              </p>
+              <p className="card-text">
+                <strong>{data.summary.slice(0, 30)}...</strong>
+              </p>
+              <p className="card-text">
+                <strong>{data.temperatureHigh.toFixed()} °C</strong>
+              </p>
+              <p className="card-text">
+                <strong>{data.temperatureLow.toFixed()} °C</strong>
+              </p>
+              <p className="card-text">
+                <strong>{data.windSpeed.toFixed()} m/s</strong>
+              </p>
             </div>
-          </div>
           </div>
         );
       });
     }
-    return (
-      <div className="weekDivReturn">
-        {WeekForecast}
-      </div>
-      ) 
+    return <div id="weekDivReturn">{WeekForecast}</div>;
   }
+}
 }
 
 export default WeekForecast;

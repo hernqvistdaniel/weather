@@ -2,24 +2,25 @@
   text-align: center;
 }
 
-body {
-  display: flex !important;
-  flex-direction: row !important;
-  justify-content: center !important;
-  align-content: center !important;
+
+#icon {
+  height: 40px;
+  width: 40px;
+  /* text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; */
 }
 
-.icon {
-  height: 70px;
-  width: 70px;
-}
-
-.cold {
-
+#iconDiv {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .card {
-  margin-top: 10px;
+  height: 90%;
 }
 .miniCard {
   height: 10%;
@@ -29,17 +30,17 @@ body {
   border: 1px solid black;
 }
 
-#root {
-
-}
-
-.dailyGroup {
-
+.span {
+  font-size: 32px;
 }
 
 .dailyMinis {
-  height: 50px;
+  width: 100px;
   font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border: 1px solid black;
 }
 
 .dailyIcon {
@@ -48,29 +49,63 @@ body {
 }
 
 #dayDiv {
-
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 #dayDivReturn {
-  
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 #currentDiv {
-  
+  display:flex;
+  justify-content: center;
+  align-content: center;
+}
+
+#weekDiv p {
+  font-size: 15px;
 }
 
 #weekDiv {
-  
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 200px;
 }
 
 #weekDivReturn {
- 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 #navbarDiv {
-  
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
 }
 
 #weeklyBarDiv {
- 
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+#appDiv {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#spinner {
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }

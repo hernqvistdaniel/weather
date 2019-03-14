@@ -69,8 +69,10 @@ class WeatherHeader extends React.Component {
       return <div>Error: {this.state.error.message}</div>;
     } else if (!this.state.isLoaded) {
       return (
+        <div id="spinner">
         <div className="spinner-border" role="status">
           <span className="sr-only">Loading...</span>
+        </div>
         </div>
       );
     } else {
