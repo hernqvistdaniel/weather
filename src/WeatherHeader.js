@@ -88,21 +88,21 @@ class WeatherHeader extends React.Component {
               <h5 className="card-title">{this.state.name}</h5>
               <h6 className="card-subtitle mb-2 text-muted">Time: <em>{new Date(this.state.time).toLocaleTimeString()}</em></h6>
               <p className="card-text">
-                The weather is: {this.state.summary} ({this.state.summarySub})
+                The weather is: <strong>{this.state.summary}</strong> ({this.state.summarySub})
               </p>
               <img className="icon" alt="Icon displaying current weather." src={`http://openweathermap.org/img/w/${this.state.icon}.png`} />
               <br />
               <p className="card-text">
-                With a temperature of: {this.props.celsius ? this.state.temperature.toFixed() : this.celsiusToFahrenheit(this.state.temperature).toFixed()}{this.props.celsius ? ' °C' : ' °F'}
+                With a temperature of: <strong>{this.props.celsius ? this.state.temperature.toFixed() : this.celsiusToFahrenheit(this.state.temperature).toFixed()}{this.props.celsius ? ' °C' : ' °F'}</strong>
               </p>
               <p className="card-text">
-                And a windspeed of {this.state.wind} m/s
+                And a windspeed of <strong>{this.state.wind} m/s</strong>
               </p>
               <p className="card-text">
-                The sun will rise at: {new Date(this.state.sunUp * 1000).toLocaleString().slice(10, 16)}
+                The sun will rise at: <strong>{new Date(this.state.sunUp * 1000).toLocaleString().slice(10, 16)}</strong>
               </p>
               <p className="card-text">
-                And set at: {new Date(this.state.sunDown * 1000).toLocaleString().slice(10, 16)}
+                And set at: <strong>{new Date(this.state.sunDown * 1000).toLocaleString().slice(10, 16)}</strong>
               </p>
             </div>
           </div>
