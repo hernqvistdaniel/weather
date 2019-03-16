@@ -109,3 +109,16 @@
   justify-content: center;
   align-content: center;
 }
+
+#hej {
+  text-align: center;
+}
+
+.card-body {
+  text-align: center;
+}
+
+button {
+  width: 10%;
+  align-self: center;
+}

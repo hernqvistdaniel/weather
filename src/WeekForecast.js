@@ -5,8 +5,12 @@ class WeekForecast extends React.Component {
     isLoaded: false,
     id: null,
     summary: [],
-    coords: []
+    coords: [],
   };
+
+  celsiusToFahrenheit = (degreesInCelsius) => {
+    return degreesInCelsius * (9/5) + 32;
+  }
 
   componentDidMount() {
     const APIkey = "edd839fe6f8824a69560462761ca9d86";
@@ -60,15 +64,15 @@ class WeekForecast extends React.Component {
     } else {
     let WeekForecast;
     if (result.length > 0) {
-      WeekForecast = result.map(data => {
+      WeekForecast = result.map((data, index) => {
         return (
-          <div id="weekDiv">
-            <div>
-              <img
+          <div id="weekDiv" key={index}>
+            <div id="hej">
+              {/* <img
                 src={`http://openweathermap.org/img/w/${data.icon}.png`}
                 className="card-img-top dailyIcon"
                 alt="Icon displaying weather"
-              />
+              /> */}
 
               <p className="card-title">
                 <strong>{new Date(data.time * 1000).toDateString().slice(0, 10)}</strong>
@@ -77,13 +81,13 @@ class WeekForecast extends React.Component {
                 <strong>{data.summary.slice(0, 30)}...</strong>
               </p>
               <p className="card-text">
-                <strong>{data.temperatureHigh.toFixed()} °C</strong>
+                Temp High: <strong>{this.props.celsius ? data.temperatureHigh.toFixed() : this.celsiusToFahrenheit(data.temperatureHigh).toFixed()}{this.props.celsius ? '°C' : '°F'}</strong>
               </p>
               <p className="card-text">
-                <strong>{data.temperatureLow.toFixed()} °C</strong>
+                Temp Low: <strong>{this.props.celsius ? data.temperatureLow.toFixed() : this.celsiusToFahrenheit(data.temperatureLow).toFixed()}{this.props.celsius ? '°C' : '°F'}</strong>
               </p>
               <p className="card-text">
-                <strong>{data.windSpeed.toFixed()} m/s</strong>
+                Wind: <strong>{data.windSpeed.toFixed()} m/s</strong>
               </p>
             </div>
           </div>

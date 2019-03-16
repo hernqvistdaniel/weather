@@ -6,8 +6,12 @@ class DayForecast extends React.Component {
     id: null,
     name: "",
     summary: [],
-    coords: []
+    coords: [],
   };
+
+  celsiusToFahrenheit = (degreesInCelsius) => {
+    return degreesInCelsius * (9/5) + 32;
+  }
 
   componentDidMount() {
     const APIkey = "5e158b3eb258eaa205c563444bddb6e2";
@@ -26,7 +30,8 @@ class DayForecast extends React.Component {
             this.setState({
               isLoaded: true,
               name: result.city.name,
-              summary: result.list
+              summary: result.list,
+              id: result.id
             });
           },
           error => {
@@ -42,7 +47,7 @@ class DayForecast extends React.Component {
   render() {
     let hours = this.state.summary;
     let result = [];
-
+    
     for (let i = 0; i < 8; i++) {
       if (hours[i]) {
         result.push(hours[i]);
@@ -51,9 +56,9 @@ class DayForecast extends React.Component {
 
     let hoursForecast;
     if (result.length > 0) {
-      hoursForecast = result.map(data => {
+      hoursForecast = result.map((data, index) => {
         return (
-          <div className="dailyMinis">
+          <div className="dailyMinis" key={index}>
           <div id="iconDiv">
             <img
               id="icon"
@@ -62,7 +67,7 @@ class DayForecast extends React.Component {
             />
               </div>
               <p><strong>{data.dt_txt.slice(10, 16)}</strong></p>
-              <p><strong>{data.main.temp.toFixed()} °C</strong></p>
+              <p><strong>{this.props.celsius ? data.main.temp.toFixed() : this.celsiusToFahrenheit(data.main.temp).toFixed()}{this.props.celsius ? '°C' : '°F'}</strong></p>
           </div>
         );
       });
