@@ -67,7 +67,7 @@ class DayForecast extends React.Component {
             />
               </div>
               <p><strong>{data.dt_txt.slice(10, 16)}</strong></p>
-              <p><strong>{this.props.celsius ? data.main.temp.toFixed() : this.celsiusToFahrenheit(data.main.temp).toFixed()}{this.props.celsius ? '°C' : '°F'}</strong></p>
+              <p><strong>{this.props.celsius ? data.main.temp.toFixed() : this.celsiusToFahrenheit(data.main.temp).toFixed()}{this.props.celsius ? ' °C' : ' °F'}</strong></p>
           </div>
         );
       });

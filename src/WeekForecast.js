@@ -81,10 +81,10 @@ class WeekForecast extends React.Component {
                 <strong>{data.summary.slice(0, 30)}...</strong>
               </p>
               <p className="card-text">
-                Temp High: <strong>{this.props.celsius ? data.temperatureHigh.toFixed() : this.celsiusToFahrenheit(data.temperatureHigh).toFixed()}{this.props.celsius ? '°C' : '°F'}</strong>
+                Temp High: <strong>{this.props.celsius ? data.temperatureHigh.toFixed() : this.celsiusToFahrenheit(data.temperatureHigh).toFixed()}{this.props.celsius ? ' °C' : ' °F'}</strong>
               </p>
               <p className="card-text">
-                Temp Low: <strong>{this.props.celsius ? data.temperatureLow.toFixed() : this.celsiusToFahrenheit(data.temperatureLow).toFixed()}{this.props.celsius ? '°C' : '°F'}</strong>
+                Temp Low: <strong>{this.props.celsius ? data.temperatureLow.toFixed() : this.celsiusToFahrenheit(data.temperatureLow).toFixed()}{this.props.celsius ? ' °C' : ' °F'}</strong>
               </p>
               <p className="card-text">
                 Wind: <strong>{data.windSpeed.toFixed()} m/s</strong>

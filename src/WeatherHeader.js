@@ -93,7 +93,7 @@ class WeatherHeader extends React.Component {
               <img className="icon" alt="Icon displaying current weather." src={`http://openweathermap.org/img/w/${this.state.icon}.png`} />
               <br />
               <p className="card-text">
-                With a temperature of: {this.props.celsius ? this.state.temperature.toFixed() : this.celsiusToFahrenheit(this.state.temperature).toFixed()}{this.props.celsius ? '°C' : '°F'}
+                With a temperature of: {this.props.celsius ? this.state.temperature.toFixed() : this.celsiusToFahrenheit(this.state.temperature).toFixed()}{this.props.celsius ? ' °C' : ' °F'}
               </p>
               <p className="card-text">
                 And a windspeed of {this.state.wind} m/s
