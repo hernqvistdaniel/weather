@@ -67,8 +67,11 @@ class WeekForecast extends React.Component {
       WeekForecast = result.map((data, index) => {
         return (
           <div id="weekDiv" key={index}>
-            <div id="hej">
-              {/* <img
+            <div id="weekContainer">
+
+              
+              {/* Remove this? cause it makes no sense to have an icon for a summary of a day
+              <img
                 src={`http://openweathermap.org/img/w/${data.icon}.png`}
                 className="card-img-top dailyIcon"
                 alt="Icon displaying weather"
