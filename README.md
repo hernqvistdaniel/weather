@@ -1,1 +1,0 @@
-Weather app using the DarkSky and OpenWeatherMap forecast API.
